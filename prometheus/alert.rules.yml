@@ -1,0 +1,11 @@
+groups:
+  - name: system-alerts
+    rules:
+      - alert: HighCPULoad
+        expr: 100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[1m])) * 100) > 10
+        for: 20s
+        labels:
+          severity: warning
+        annotations:
+          summary: "High CPU load detected on {{ $labels.instance }}"
+          description: "CPU load is above 10% for more than 20 seconds."
