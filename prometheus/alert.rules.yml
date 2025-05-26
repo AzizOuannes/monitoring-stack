@@ -3,13 +3,13 @@ groups:
     rules:
       # High CPU usage
       - alert: HighCPULoad
-        expr: 100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[1m])) * 100) > 80
-        for: 2m
+        expr: 100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[1m])) * 100) > 10
+        for: 15s
         labels:
           severity: warning
         annotations:
           summary: "High CPU load on {{ $labels.instance }}"
-          description: "CPU load is above 80% for more than 2 minutes."
+          description: "CPU load is above 10% for more than 15 seconds."
 
       # High Memory usage
       - alert: HighMemoryUsage

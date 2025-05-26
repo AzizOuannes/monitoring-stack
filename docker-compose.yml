@@ -35,6 +35,8 @@ services:
       - 9093:9093
     volumes:
       - ./alertmanager:/etc/alertmanager
+    environment:
+      - SLACK_WEBHOOK_URL=${SLACK_WEBHOOK_URL}
     command:
       - '--config.file=/etc/alertmanager/alertmanager.yml'
     restart: always
