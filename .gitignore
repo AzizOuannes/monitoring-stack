@@ -4,3 +4,5 @@
 # Ignore Docker volumes or logs
 volumes/
 *.log
+
+alertmanager/alertmanager.yml
