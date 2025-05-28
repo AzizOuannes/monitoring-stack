@@ -6,6 +6,7 @@ services:
     container_name: prometheus
     volumes:
       - ./prometheus:/etc/prometheus
+      - prometheus-data:/prometheus
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
     ports:
@@ -44,4 +45,4 @@ services:
 volumes:
   grafana-storage:
   alertmanager-data:
-  
+  prometheus-data:  
